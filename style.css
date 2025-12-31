@@ -1,6 +1,11 @@
-html, body {
+html, body {  /* background image*/
   height: 100%;
   margin: 0;
+  background: #2A7B9B;
+  background: -webkit-linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+  background: -moz-linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+  background: linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2A7B9B", endColorstr="#EDDD53", GradientType=1);
 }
 
 body {
@@ -8,8 +13,21 @@ body {
   flex-direction: column;
 }
 
+
+
 h1{
     text-align: center;
+    font-family: monospace;
+}
+
+h2{
+  text-align: center;
+  font-family: monospace;
+}
+
+h3{
+  text-align: center;
+  font-family: monospace;
 }
 
 #social {
@@ -18,11 +36,33 @@ h1{
   padding: 20px;
 }
 
+.profile_whatsapp{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile_whatsapp img{
+  
+  width: 150px;
+  height: 150px;
+  display: block
+
+}
+
 /*whatsapp is the class to the <a> element and the img needs to be selected*/
-.whatsapp img{
+.bi-whatsapp{
     width: 32px;
     height: 32px;
-    
+    background-color: transparent;
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 2.8vw;
+    color: rgb(0, 0, 0);
+    margin: 0px 5px 0px 5px;
+    transition: 0.5s;
+}
+
+.bi-whatsapp:hover{
+  color: #ffffff;
 }
 
 .bi-linkedin{
@@ -36,8 +76,10 @@ h1{
     transition: 0.5s;
 }
 
+/* hover is a pseudo class */
+
 .bi-linkedin:hover{
-    color: #11c2e5;
+    color: #ffffff;
 }
 
 .social{
@@ -52,5 +94,5 @@ h1{
 }
 
 .social:hover {
-  color: #11c2e5;
+  color: #ffffff;
 }
