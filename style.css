@@ -1,0 +1,36 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+h1{
+    text-align: center;
+}
+
+#social {
+  margin-top: auto;
+  text-align: center;
+  padding: 20px;
+}
+
+/*whatsapp is the class to the <a> element and the img needs to be selected*/
+.whatsapp img{
+    width: 32px;
+    height: 32px;
+    
+}
+
+.bi-linkedin{
+    width: 32px;
+    height: 32px;
+}
+
+.bi-github{
+    width: 32px;
+    height: 32px;
+}
