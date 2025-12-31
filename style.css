@@ -28,9 +28,29 @@ h1{
 .bi-linkedin{
     width: 32px;
     height: 32px;
+    background-color: transparent;
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 2.8vw;
+    color: rgb(0, 0, 0);
+    margin: 0px 5px 0px 5px;
+    transition: 0.5s;
 }
 
-.bi-github{
+.bi-linkedin:hover{
+    color: #11c2e5;
+}
+
+.social{
     width: 32px;
     height: 32px;
+    background-color: transparent;
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 2.8vw;
+    color: rgb(0, 0, 0);
+    margin: 0px 5px 0px 5px;
+    transition: 0.5s;
+}
+
+.social:hover {
+  color: #11c2e5;
 }
