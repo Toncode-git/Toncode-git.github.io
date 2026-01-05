@@ -43,16 +43,20 @@ h4{
   padding: 20px;
 }
 
-.profile_whatsapp{
+.profile_image{
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.profile_whatsapp img{
+.profile_image img{
   
-  width: 150px;
-  height: 150px;
-  display: block
+  width: 250px;
+  height: 250px;
+  display: block;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  padding: 40px;
 
 }
 
