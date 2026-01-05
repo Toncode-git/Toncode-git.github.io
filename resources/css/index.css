@@ -11,13 +11,17 @@ html, body {  /* background image*/
 body {
   display: flex;
   flex-direction: column;
-}
+  min-height: 100vh;
 
+}
 
 
 h1{
     text-align: center;
     font-family: monospace;
+    font-size: 36px;
+    font-weight: bold;
+    
 
 }
 
@@ -35,6 +39,10 @@ h4{
   text-align: center;
   font-family: monospace;
   
+}
+p{
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 #social {
@@ -72,8 +80,12 @@ h4{
     transition: 0.5s;
 }
 
+.bi-whatsapp{
+  font-size: 5vw;
+}
+
 .bi-whatsapp:hover{
-  color: #ffffff;
+  color: #59dd2d;
 }
 
 .bi-linkedin{
@@ -90,7 +102,8 @@ h4{
 /* hover is a pseudo class */
 
 .bi-linkedin:hover{
-    color: #ffffff;
+    color: #2e8dec;
+
 }
 
 .social{
@@ -108,3 +121,8 @@ h4{
   color: #ffffff;
 }
 
+footer{
+   margin-top: auto;
+
+
+}
