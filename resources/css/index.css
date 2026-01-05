@@ -17,13 +17,45 @@ body {
 
 
 h1{
-    text-align: center;
-    font-family: monospace;
-    font-size: 36px;
-    font-weight: bold;
-    
-
+  text-align: center;
+  font-family: monospace;
+  font-size: 36px;
+  font-weight: bold;
+	-webkit-animation: tracking-in-contract 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	animation: tracking-in-contract 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
+/* ...existing code... */
+
+@keyframes tracking-in-contract {
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes tracking-in-contract {
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+}
+
+/* ...existing code... */
+
 
 h2{
   text-align: center;
@@ -64,7 +96,7 @@ p{
   border-radius: 50%;
   object-fit: cover;
   display: block;
-  padding: 40px;
+  padding: 35px;
 
 }
 
@@ -126,3 +158,9 @@ footer{
 
 
 }
+
+.tracking-in-contract h1{
+	-webkit-animation: tracking-in-contract 0.10s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	        animation: tracking-in-contract 0.10s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
