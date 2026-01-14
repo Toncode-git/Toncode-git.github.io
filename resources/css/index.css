@@ -8,6 +8,7 @@ html, body {  /* background image*/
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2A7B9B", endColorstr="#EDDD53", GradientType=1);
 }
 
+
 body {
   display: flex;
   flex-direction: column;
@@ -18,11 +19,13 @@ body {
 
 h1{
   text-align: center;
-  font-family: monospace;
-  font-size: 36px;
+  font-family: "Abril Fatface", serif;
+  font-size: 40px;
   font-weight: bold;
 	-webkit-animation: tracking-in-contract 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 	animation: tracking-in-contract 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  letter-spacing: 200px;
+  
 }
 /* ...existing code... */
 
