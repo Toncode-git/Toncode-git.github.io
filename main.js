@@ -9,3 +9,18 @@ console.log("my name is " + "alex")
 
 let numbers = 0.9;
 console.log(Math.round(numbers));
+
+
+const myobject = {
+    name : 'Alex',
+    favoriteColor: 'blue'
+};
+
+let object = par => {
+    par.favoriteColor = 'green'
+};
+
+object(myobject);
+
+console.log(myobject.favoriteColor);
+
