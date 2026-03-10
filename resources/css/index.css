@@ -1,11 +1,10 @@
 html, body {  /* background image*/
   height: 100%;
   margin: 0;
-  background: #2A7B9B;
-  background: -webkit-linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
-  background: -moz-linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
-  background: linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2A7B9B", endColorstr="#EDDD53", GradientType=1);
+  background-color: #060a0f;
+  background-image:
+    radial-gradient(ellipse at 10% 0%, #001a0d 0%, transparent 60%),
+    radial-gradient(ellipse at 90% 100%, #000d1a 0%, transparent 60%);
 }
 
 
@@ -22,6 +21,7 @@ h1{
   font-family: "Abril Fatface", serif;
   font-size: 40px;
   font-weight: bold;
+  color: ;
 	-webkit-animation: tracking-in-contract 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 	animation: tracking-in-contract 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
   letter-spacing: 200px;
@@ -110,7 +110,7 @@ p{
     background-color: transparent;
     font-family: 'Ubuntu Mono', monospace;
     font-size: 2.8vw;
-    color: rgb(0, 0, 0);
+    color: rgb(251, 251, 251);
     margin: 0px 5px 0px 5px;
     transition: 0.5s;
 }
@@ -129,7 +129,7 @@ p{
     background-color: transparent;
     font-family: 'Ubuntu Mono', monospace;
     font-size: 2.8vw;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     margin: 0px 5px 0px 5px;
     transition: 0.5s;
 }
@@ -147,13 +147,13 @@ p{
     background-color: transparent;
     font-family: 'Ubuntu Mono', monospace;
     font-size: 2.8vw;
-    color: rgb(0, 0, 0);
+    color: rgb(245, 241, 241);
     margin: 0px 5px 0px 5px;
     transition: 0.5s;
 }
 
 .social:hover {
-  color: #ffffff;
+  color: #000000;
 }
 
 footer{
