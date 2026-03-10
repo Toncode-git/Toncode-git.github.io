@@ -7,21 +7,37 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&display=swap');
 
+
+    /* :root targets the <html> element — highest scope in CSS.
+       Variables defined here are accessible anywhere on the page via var(--name). */
     :root {
-      --bg: #060a0f;
-      --panel: #0b1017;
-      --border: #0f2a1a;
-      --green: #00ff88;
-      --green-dim: #00cc6a;
-      --green-dark: #003d1f;
-      --cyan: #00e5ff;
-      --text: #c8d8c0;
-      --text-dim: #4a6a50;
-      --glow: 0 0 12px #00ff8844;
+      --bg: #060a0f;               /* main page background (near-black) */
+      --panel: #0b1017;            /* card / section backgrounds */
+      --border: #0f2a1a;           /* border colors */
+      --green: #00ff88;            /* primary accent — bright green */
+      --green-dim: #00cc6a;        /* slightly muted green (hover states, etc.) */
+      --green-dark: #003d1f;       /* dark green for subtle fills */
+      --cyan: #00e5ff;             /* secondary accent color */
+      --text: #c8d8c0;             /* main readable text color */
+      --text-dim: #4a6a50;         /* muted / secondary text */
+      --glow: 0 0 12px #00ff8844;  /* reusable box-shadow glow effect */
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: auto; }
+
+    #boot-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.2rem;
+}
 
     body {
       background: var(--bg);
@@ -188,7 +204,7 @@
       padding: 20px 24px;
       display: grid; grid-template-columns: 1fr auto;
       gap: 10px; align-items: start;
-      transition: border-color 0.25s, background 0.25s;
+      transition: border-color 0.40s, background 0.40s;
       text-decoration: none; color: inherit;
       position: relative; overflow: hidden;
     }
@@ -242,8 +258,15 @@
       .topbar-right { display: none; }
     }
   </style>
+
 </head>
+
 <body>
+<div id="boot-screen">
+    <div id="terminal-lines">
+    </div>
+</div>
+
 <div class="site-wrap">
 
   <div class="topbar">
@@ -279,7 +302,7 @@
       <div class="stat-card"><div class="stat-value">6+</div><div class="stat-label">Months Learning Security</div></div>
       <div class="stat-card"><div class="stat-value">10+</div><div class="stat-label">Projects Shipped</div></div>
       <div class="stat-card"><div class="stat-value">CTF</div><div class="stat-label">Blue Team Challenges</div></div>
-      <div class="stat-card"><div class="stat-value">∞</div><div class="stat-label">Logs Analyzed</div></div>
+      <div class="stat-card"><div class="stat-value"category:themes >∞</div><div class="stat-label">Logs Analyzed</div></div>
     </div>
   </section>
 
@@ -375,7 +398,65 @@
 
 </div>
 
+<!--JS-->
 <script>
+
+history.scrollRestoration = 'manual';  // stops browser from restoring scroll
+window.scrollTo(0, 0);
+
+const now = new Date();
+const date = now.toLocaleDateString('en-CA');
+const time = now.toLocaleTimeString('en-GB');
+const lines = [
+  ' $ sudo deploy Ale -now',
+  ' ',
+  ' [*] Initializing secure connection...',
+  ' [*] Authenticating user: Alejandro Cabrera',
+  ' [+] Identity verified................ OK',
+  ' [+] Loading skill modules............. OK',
+  ' [+] Mounting project filesystem....... OK',
+  ' [+] Establishing encrypted channel.... OK',
+  ' ',
+  ' [!] WARNING: Extraordinary talent detected',
+  ' ',
+  ' > Welcome. Deploying portfolio...',
+  ' > Access granted.',
+];
+
+
+const terminal = document.querySelector('#terminal-lines');
+let lineIndex = 0;
+
+function typeLine(text, callback) {
+  const p = document.createElement('p'); // create a new line
+  terminal.appendChild(p);
+  let i = 0;
+  const type = () => {
+    if (i < text.length) {
+      p.textContent += text[i++];
+      setTimeout(type, 40);       // speed per character
+    } else {
+      setTimeout(callback, 200);  // pause before next line
+    }
+  };
+  type();
+}
+
+function runLines() {
+  if (lineIndex < lines.length) {
+    typeLine(lines[lineIndex++], runLines); // type line, then call itself for next
+  } else {
+    setTimeout(() => {                      // all lines done → hide boot screen
+      document.querySelector('#boot-screen').style.display = 'none';
+      window.scrollTo(0, 0);
+    }, 600);
+  }
+}
+
+runLines();
+
+  window.scrollTo(0,0);
+
   // Animate skill bars on scroll into view
   const fills = document.querySelectorAll('.skill-fill');
   const observer = new IntersectionObserver((entries) => {
@@ -395,6 +476,9 @@
   let i = 0;
   const type = () => { if (i < original.length) { prompt.textContent += original[i++]; setTimeout(type, 45); } };
   setTimeout(type, 400);
+
 </script>
+
+
 </body>
 </html>
