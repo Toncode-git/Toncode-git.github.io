@@ -37,8 +37,12 @@
   color: var(--green);
   font-family: 'Share Tech Mono', monospace;
   font-size: 1.2rem;
+
+  #terminal-lines p {
+  min-height: 1rem;
 }
 
+}
     body {
       background: var(--bg);
       background-image:
@@ -258,13 +262,11 @@
       .topbar-right { display: none; }
     }
   </style>
-
 </head>
 
 <body>
 <div id="boot-screen">
-    <div id="terminal-lines">
-    </div>
+    <div id="terminal-lines"></div>
 </div>
 
 <div class="site-wrap">
@@ -400,7 +402,6 @@
 
 <!--JS-->
 <script>
-
 history.scrollRestoration = 'manual';  // stops browser from restoring scroll
 window.scrollTo(0, 0);
 
@@ -408,50 +409,51 @@ const now = new Date();
 const date = now.toLocaleDateString('en-CA');
 const time = now.toLocaleTimeString('en-GB');
 const lines = [
-  ' $ sudo deploy Ale -now',
-  ' ',
-  ' [*] Initializing secure connection...',
-  ' [*] Authenticating user: Alejandro Cabrera',
-  ' [+] Identity verified................ OK',
-  ' [+] Loading skill modules............. OK',
-  ' [+] Mounting project filesystem....... OK',
-  ' [+] Establishing encrypted channel.... OK',
-  ' ',
-  ' [!] WARNING: Extraordinary talent detected',
-  ' ',
-  ' > Welcome. Deploying portfolio...',
-  ' > Access granted.',
+  { text: '  $ sudo deploy Ale -now' },
+  { text: ' ' },
+  { text: ' [*] Initializing secure connection...' },
+  { text: ' [*] Authenticating user: Alejandro Cabrera' },
+  { text: ' [+] Identity verified................. OK' },
+  { text: ' [+] Loading skill modules............. OK' },
+  { text: ' [+] Mounting project filesystem....... OK' },
+  { text: ' [+] Establishing encrypted channel.... OK' },
+  { text: ' [!] WARNING: Extraordinary talent detected', color: '#ffcc00' },
+  { text: ' > Welcome. Deploying portfolio...' },
+  { text: ' > Access granted.' },
 ];
-
 
 const terminal = document.querySelector('#terminal-lines');
 let lineIndex = 0;
 
-function typeLine(text, callback) {
-  const p = document.createElement('p'); // create a new line
+function typeLine(text, color, callback) {
+  const p = document.createElement('p');
+  if (color) p.style.color = color;  // apply color if provided
   terminal.appendChild(p);
   let i = 0;
   const type = () => {
     if (i < text.length) {
       p.textContent += text[i++];
-      setTimeout(type, 40);       // speed per character
+      setTimeout(type, 20);
     } else {
-      setTimeout(callback, 200);  // pause before next line
+      setTimeout(callback, 100);
     }
   };
   type();
 }
 
+
 function runLines() {
   if (lineIndex < lines.length) {
-    typeLine(lines[lineIndex++], runLines); // type line, then call itself for next
+    const line = lines[lineIndex++];
+    typeLine(line.text, line.color, runLines);
   } else {
-    setTimeout(() => {                      // all lines done → hide boot screen
+    setTimeout(() => {
       document.querySelector('#boot-screen').style.display = 'none';
       window.scrollTo(0, 0);
     }, 600);
   }
 }
+
 
 runLines();
 
