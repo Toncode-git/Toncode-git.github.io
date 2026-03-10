@@ -92,6 +92,13 @@
       letter-spacing: 0.08em; transition: color 0.2s;
     }
     .topbar-right a:hover { color: var(--green); }
+    #lang-toggle {
+      background: none; border: 1px solid var(--border);
+      color: var(--text-dim); font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem; letter-spacing: 0.08em;
+      padding: 2px 8px; cursor: pointer; transition: color 0.2s, border-color 0.2s;
+    }
+    #lang-toggle:hover { color: var(--green); border-color: var(--green); }
 
     /* ── HERO ── */
     .hero {
@@ -275,9 +282,10 @@
   <div class="topbar">
     <div><span class="prompt">alejandro@portfolio:~$</span><span class="blink"></span></div>
     <nav class="topbar-right">
-      <a href="#skills">skills</a>
-      <a href="#projects">projects</a>
+      <a href="#skills" id="nav-skills">skills</a>
+      <a href="#projects" id="nav-projects">projects</a>
       <a href="https://github.com/Toncode-git" target="_blank">github</a>
+      <button id="lang-toggle">ES</button>
     </nav>
   </div>
 
@@ -471,6 +479,86 @@ runLines();
     });
   }, { threshold: 0.3 });
   fills.forEach(f => observer.observe(f));
+
+  // Language toggle
+  const translations = {
+    en: {
+      navSkills:   'skills',
+      navProjects: 'projects',
+      label:       '// SOC Analyst · Blue Team',
+      bio:         'Junior Cybersecurity Analyst with hands-on experience securing Linux, cloud, and web environments. Strong Python and C foundation with a blue-team mindset.',
+      metricsTitle: '// metrics',
+      stat1:       'Months Learning Security',
+      stat2:       'Projects Shipped',
+      stat3:       'Blue Team Challenges',
+      stat4:       'Logs Analyzed',
+      skillsTitle:  '// skills',
+      projectsTitle:'// projects',
+      proj1name:   'Reverse shell',
+      proj1desc:   'Interactive cybersecurity learning roadmap documenting the path to SOC analyst readiness, with phases, tools, and certifications.',
+      proj2name:   'Coding',
+      proj2desc:   'Progressive exercises covering JavaScript fundamentals, algorithms, and OOP concepts as part of a structured learning curriculum.',
+      proj3name:   'Linux Security Hardening',
+      proj3desc:   'Bash scripts and configuration guides for securing Linux servers — firewall rules, privilege management, and log monitoring.',
+      footerNote:  'Personal technical website – continuously under development.<br>Documenting projects, experiments, and security learning.',
+    },
+    es: {
+      navSkills:   'habilidades',
+      navProjects: 'proyectos',
+      label:       '// Analista SOC · Equipo Azul',
+      bio:         'Analista de Ciberseguridad Junior con experiencia práctica asegurando entornos Linux, nube y web. Base sólida en Python y C con mentalidad de equipo azul.',
+      metricsTitle: '// métricas',
+      stat1:       'Meses Aprendiendo Seguridad',
+      stat2:       'Proyectos Entregados',
+      stat3:       'Retos Equipo Azul',
+      stat4:       'Logs Analizados',
+      skillsTitle:  '// habilidades',
+      projectsTitle:'// proyectos',
+      proj1name:   'Shell Inversa',
+      proj1desc:   'Hoja de ruta interactiva de ciberseguridad que documenta el camino hacia la preparación como analista SOC, con fases, herramientas y certificaciones.',
+      proj2name:   'Programación',
+      proj2desc:   'Ejercicios progresivos sobre fundamentos de JavaScript, algoritmos y conceptos de POO como parte de un currículo de aprendizaje estructurado.',
+      proj3name:   'Hardening de Seguridad Linux',
+      proj3desc:   'Scripts Bash y guías de configuración para asegurar servidores Linux — reglas de firewall, gestión de privilegios y monitoreo de logs.',
+      footerNote:  'Sitio web técnico personal – en desarrollo continuo.<br>Documentando proyectos, experimentos y aprendizaje en seguridad.',
+    }
+  };
+
+  let currentLang = 'en';
+
+  document.querySelector('#lang-toggle').addEventListener('click', () => {
+    currentLang = currentLang === 'en' ? 'es' : 'en';
+    const t = translations[currentLang];
+    const btn = document.querySelector('#lang-toggle');
+
+    btn.textContent = currentLang === 'en' ? 'ES' : 'EN';
+
+    document.querySelector('#nav-skills').textContent   = t.navSkills;
+    document.querySelector('#nav-projects').textContent = t.navProjects;
+    document.querySelector('.hero-label').textContent   = t.label;
+    document.querySelector('.hero-bio').textContent     = t.bio;
+
+    const statLabels = document.querySelectorAll('.stat-label');
+    statLabels[0].textContent = t.stat1;
+    statLabels[1].textContent = t.stat2;
+    statLabels[2].textContent = t.stat3;
+    statLabels[3].textContent = t.stat4;
+
+    document.querySelector('#skills .section-header h2').textContent   = t.skillsTitle;
+    document.querySelector('#projects .section-header h2').textContent = t.projectsTitle;
+
+    const projNames = document.querySelectorAll('.project-name');
+    projNames[0].textContent = t.proj1name;
+    projNames[1].textContent = t.proj2name;
+    projNames[2].textContent = t.proj3name;
+
+    const projDescs = document.querySelectorAll('.project-desc');
+    projDescs[0].textContent = t.proj1desc;
+    projDescs[1].textContent = t.proj2desc;
+    projDescs[2].textContent = t.proj3desc;
+
+    document.querySelector('.footer-note').innerHTML = t.footerNote;
+  });
 
   // Typewriter effect for topbar prompt
   const prompt = document.querySelector('.topbar .prompt');
