@@ -439,7 +439,7 @@
 
 <!--JS-->
 <script>
-history.scrollRestoration = 'manual';  // stops browser from restoring scroll
+history.scrollRestoration = 'manual';  
 window.scrollTo(0, 0);
 
 const now = new Date();
@@ -464,7 +464,7 @@ let lineIndex = 0;
 
 function typeLine(text, color, callback) {
   const p = document.createElement('p');
-  if (color) p.style.color = color;  // apply color if provided
+  if (color) p.style.color = color;  
   terminal.appendChild(p);
   let i = 0;
   const type = () => {
@@ -495,7 +495,6 @@ runLines();
 
   window.scrollTo(0,0);
 
-  // Animate skill bars on scroll into view
   const fills = document.querySelectorAll('.skill-fill');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
